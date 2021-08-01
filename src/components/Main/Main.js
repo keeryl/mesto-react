@@ -1,20 +1,57 @@
+import React from 'react';
+import api from '../../utils/Api.js';
+import Card from '../Card/Card.js';
 
-function Main () {
+function Main (props) {
+
+const [userName, setUserName] = React.useState();
+const [userDescription, setUserDescription] = React.useState();
+const [userAvatar, setUserAvatar] = React.useState();
+const [cards, setCards] = React.useState([]);
+
+React.useEffect(() => {
+    api.getInitialCards()
+      .then(result => {
+        setCards(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  [cards]
+);
+
+React.useEffect(() => {
+
+    api.getUserInfo()
+      .then(result => {
+        setUserName(result.name);
+        setUserDescription(result.about);
+        setUserAvatar(result.avatar);
+      })
+      .catch(error => {
+        console.log(error)
+      });
+
+  },
+  [userName, userAvatar, userDescription]
+);
+
   return (
     <main className="content">
     <section className="profile profile_margins">
       <div className="profile__avatar">
-        <button className="profile__avatar-btn" type="button" onClick={handleEditAvatarClick}></button>
-        <img className="profile__photo" src="#" alt="Фото пользователя"/>
+        <button className="profile__avatar-btn" type="button" onClick={props.onEditAvatar}></button>
+        <img className="profile__photo" src={userAvatar} alt="Фото пользователя"/>
       </div>
       <div className="profile__info">
         <div className="profile__info-wrapper">
-          <h1 className="profile__name"></h1>
-          <button className="profile__edit-btn" type="button" onClick={handleEditProfileClick}></button>
+          <h1 className="profile__name">{userName}</h1>
+          <button className="profile__edit-btn" type="button" onClick={props.onEditProfile}></button>
         </div>
-        <p className="profile__description"></p>
+        <p className="profile__description">{userDescription}</p>
       </div>
-      <button className="profile__add-btn" type="button" onClick={handleAddPlaceClick}></button>
+      <button className="profile__add-btn" type="button" onClick={props.onAddPlace}></button>
     </section>
     {/* <div className="popup popup_type_delete-card">
       <form action="#" class="popup__form popup__form_type_delete-card" name="delete-card" novalidate>
@@ -25,19 +62,11 @@ function Main () {
     </div> */}
     <section className="semantic-wrapper">
       <ul className="cards">
-        <template id="initialCardsTemplate">
-          <li className="card">
-            <img className="card__image" src="#" alt=""/>
-            <div className="card__label">
-              <h2 className="card__title"></h2>
-              <div className="card__like">
-                <button className="card__like-btn" type="button"></button>
-                <span className="card__like-counter">1</span>
-              </div>
-            </div>
-            <button className="card__delete-btn" type="button"></button>
-          </li>
-        </template>
+        {cards.map(item => {
+            return (
+              <Card onCardClick={props.onCardClick} card={item}/>
+            )
+          })}
       </ul>
       <div className="popup popup_type_view-card">
         <figure className="popup__image-container">
