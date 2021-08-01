@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PopupWithImage extends React.Component {
+class ImagePopup extends React.Component {
 
   constructor(props) {
     super(props);
@@ -20,4 +20,4 @@ class PopupWithImage extends React.Component {
 
 }
 
-export default PopupWithImage;
+export default ImagePopup;
