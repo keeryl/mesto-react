@@ -4,7 +4,7 @@ import Header from './Header/Header.js';
 import Main from './Main/Main.js';
 import Footer from './Footer/Footer.js';
 import PopupWithForm from './PopupWithForm/PopupWithForm.js';
-import PopupWithImage from './PopupWithImage/PopupWithImage.js';
+import ImagePopup from './ImagePopup/ImagePopup.js';
 
 function App() {
 
@@ -94,7 +94,7 @@ function App() {
         btnText="Да"
         isOpened={isAddPlacePopupOpen}>
       </PopupWithForm> */}
-      <PopupWithImage card={selectedCard} isOpened={isImagePopupOpen} onClose={closeAllPopups}/>
+      <ImagePopup card={selectedCard} isOpened={isImagePopupOpen} onClose={closeAllPopups}/>
     </div>
   );
 }
