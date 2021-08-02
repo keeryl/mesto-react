@@ -8,6 +8,12 @@ import ImagePopup from './ImagePopup/ImagePopup.js';
 
 function App() {
 
+  const [isEditProfilePopupOpen, setIsEditProfilePopup] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopup] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopup] = React.useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
+
   function handleEditAvatarClick () {
     setIsEditAvatarPopup(true);
   }
@@ -33,14 +39,6 @@ function App() {
     setIsImagePopupOpen(true);
   }
 
-
-  const [isEditProfilePopupOpen, setIsEditProfilePopup] = React.useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopup] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopup] = React.useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
-
-
   return (
     <div className="page">
       <Header/>
@@ -57,12 +55,10 @@ function App() {
         btnText="Сохранить"
         isOpened={isEditProfilePopupOpen}
         onClose={closeAllPopups}>
-          <fieldset className="popup__inputs">
             <input className="popup__input popup__input_type_profile-name" type="text" name="profileTitle" id="profileTitle" placeholder="Имя" value="" maxLength="40" minLength="2" required/>
             <span className="popup__input-error" id="profileTitle-error"></span>
             <input className="popup__input popup__input_type_profile-description" type="text" name="profileDescription" id="profileDescription" placeholder="О себе" value="" maxLength="200" minLength="2" required/>
             <span className="popup__input-error" id="profileDescription-error"></span>
-          </fieldset>
       </PopupWithForm>
       <PopupWithForm
         selectorName="edit-avatar"
@@ -70,10 +66,8 @@ function App() {
         btnText="Сохранить"
         isOpened={isEditAvatarPopupOpen}
         onClose={closeAllPopups}>
-        <fieldset className="popup__inputs">
           <input className="popup__input popup__input_type_img-link" type="url" name="avatarLink" id="avatarLink" placeholder="Ссылка на аватар" value="" required/>
           <span className="popup__input-error" id="avatarLink-error"></span>
-        </fieldset>
       </PopupWithForm>
       <PopupWithForm
         selectorName="add-card"
@@ -81,12 +75,10 @@ function App() {
         btnText="Создать"
         isOpened={isAddPlacePopupOpen}
         onClose={closeAllPopups}>
-        <fieldset className="popup__inputs">
           <input className="popup__input popup__input_type_card-name" type="text" name="cardName" id="cardName" placeholder="Название" value="" minLength="2" maxLength="30" required/>
           <span className="popup__input-error" id="cardName-error"></span>
           <input className="popup__input popup__input_type_img-link" type="url" name="imgLink" id="imgLink" placeholder="Ссылка на картинку" value="" required/>
           <span className="popup__input-error" id="imgLink-error"></span>
-        </fieldset>
       </PopupWithForm>
       {/* <PopupWithForm
         selectorName="delete-card"

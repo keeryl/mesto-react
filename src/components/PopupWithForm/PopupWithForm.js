@@ -1,24 +1,20 @@
 
 import React from 'react';
 
-class PopupWithForm extends React.Component {
+function PopupWithForm (props) {
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
     return (
-      <div className={`popup popup_type_${this.props.selectorName} ${this.props.isOpened ? "popup_opened" : ""}`}>
-        <form action="#" className={`popup__form popup__form_type_${this.props.selectorName}`} name="edit-profile" noValidate>
-          <h2 className="popup__form-header">{this.props.title}</h2>
-          { this.props.children }
-          <button className={`popup__submit-btn popup__submit-btn_type_${this.props.selectorName} popup__submit-btn_state_inactive`} type="submit">{this.props.btnText}</button>
-          <button onClick={this.props.onClose} className={`popup__close-btn popup__close-btn_type_${this.props.selectorName}`} type="reset"></button>
+      <div className={`popup popup_type_${props.selectorName} ${props.isOpened ? "popup_opened" : ""}`}>
+        <form action="#" className={`popup__form popup__form_type_${props.selectorName}`} name={props.selectorName}>
+          <h2 className="popup__form-header">{props.title}</h2>
+          <fieldset className="popup__inputs">
+            { props.children }
+          </fieldset>
+          <button className={`popup__submit-btn popup__submit-btn_type_${props.selectorName} popup__submit-btn_state_inactive`} type="submit">{props.btnText}</button>
+          <button onClick={props.onClose} className={`popup__close-btn popup__close-btn_type_${props.selectorName}`} type="reset"></button>
         </form>
       </div>
     )
-  }
 
 }
 
