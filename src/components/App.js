@@ -17,12 +17,11 @@ function App() {
     api.getUserInfo()
       .then(result => {
         setCurrentUser({...result});
-        console.log(currentUser);
       })
       .catch(error => {
         console.log(error);
       });
-  }, [currentUser]);
+  }, []);
 
   //debugger;
 
