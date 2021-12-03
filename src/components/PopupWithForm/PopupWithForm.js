@@ -5,7 +5,7 @@ function PopupWithForm (props) {
 
     return (
       <div className={`popup popup_type_${props.selectorName} ${props.isOpened ? "popup_opened" : ""}`}>
-        <form action="#" className={`popup__form popup__form_type_${props.selectorName}`} name={props.selectorName}>
+        <form onSubmit={props.onSubmit} action="#" className={`popup__form popup__form_type_${props.selectorName}`} name={props.selectorName}>
           <h2 className="popup__form-header">{props.title}</h2>
           <fieldset className="popup__inputs">
             { props.children }
@@ -15,7 +15,6 @@ function PopupWithForm (props) {
         </form>
       </div>
     )
-
 }
 
 export default PopupWithForm;
