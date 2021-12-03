@@ -39,7 +39,6 @@ function EditProfilePopup(props) {
                 type="text"
                 name="profileTitle"
                 id="profileTitle"
-                /*placeholder="Имя"*/
                 value={name}
                 maxLength="40"
                 minLength="2"
@@ -50,7 +49,6 @@ function EditProfilePopup(props) {
                type="text"
                name="profileDescription"
                id="profileDescription"
-               /*placeholder="О себе"*/
                value={description}
                maxLength="200"
                minLength="2"

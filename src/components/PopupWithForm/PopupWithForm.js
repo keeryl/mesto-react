@@ -10,7 +10,7 @@ function PopupWithForm (props) {
           <fieldset className="popup__inputs">
             { props.children }
           </fieldset>
-          <button className={`popup__submit-btn popup__submit-btn_type_${props.selectorName} popup__submit-btn_state_inactive`} type="submit">{props.btnText}</button>
+          <button className={`popup__submit-btn popup__submit-btn_type_${props.selectorName}`} type="submit">{props.btnText}</button>
           <button onClick={props.onClose} className={`popup__close-btn popup__close-btn_type_${props.selectorName}`} type="reset"></button>
         </form>
       </div>
