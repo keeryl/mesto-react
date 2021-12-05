@@ -6,11 +6,14 @@ function AddPlacePopup(props) {
   const [title, setTitle] = React.useState('');
   const [url, setUrl] = React.useState('');
 
+  React.useEffect(() => {
+    setTitle('');
+    setUrl('');
+  }, [props.isOpen]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onAddCard(title, url);
-    setTitle('');
-    setUrl('');
   }
 
   const handleTitleInput = (event) => {
@@ -33,6 +36,7 @@ function AddPlacePopup(props) {
     >
       <input
         onChange={handleTitleInput}
+        value={title || ''}
         className="popup__input popup__input_type_card-name"
         type="text"
         name="cardName"
@@ -45,12 +49,13 @@ function AddPlacePopup(props) {
       <span className="popup__input-error" id="cardName-error"></span>
       <input
         onChange={handleUrlInput}
+        value={url || ''}
         className="popup__input popup__input_type_img-link"
         type="url"
         name="imgLink"
         id="imgLink"
         placeholder="Ссылка на картинку"
-        require
+        required
       />
       <span className="popup__input-error" id="imgLink-error"></span>
     </PopupWithForm>
