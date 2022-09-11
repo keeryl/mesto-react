@@ -44,3 +44,13 @@ Start project with
 ```bash
   npm run start
 ```
+
+## Project Dependencies
+
+– "react": "^17.0.2"
+
+– "react-dom": "^17.0.2"
+
+– "react-scripts": "4.0.3"
+
+– "web-vitals": "^1.1.2"
