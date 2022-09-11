@@ -25,7 +25,7 @@ This project is a result of rebuiding project Mesto (https://github.com/keeryl/m
 Clone the project
 
 ```bash
-  git clone https://github.com/keeryl/https://github.com/keeryl/mesto-react.git.git
+  git clone https://github.com/keeryl/https://github.com/keeryl/mesto-react.git
 ```
 
 Go to the project directory
